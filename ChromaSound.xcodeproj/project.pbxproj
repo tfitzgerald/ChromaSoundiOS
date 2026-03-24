@@ -17,6 +17,7 @@
 		A008 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F008 /* Models.swift */; };
 		A009 /* ColorMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F009 /* ColorMapper.swift */; };
 		A010 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F010 /* AudioEngine.swift */; };
+		A011 /* HelpView.swift in Sources */    = {isa = PBXBuildFile; fileRef = F011 /* HelpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +31,8 @@
 		F008 /* Models.swift */           = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift;             sourceTree = "<group>"; };
 		F009 /* ColorMapper.swift */      = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorMapper.swift;        sourceTree = "<group>"; };
 		F010 /* AudioEngine.swift */      = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift;        sourceTree = "<group>"; };
-		F011 /* Info.plist */             = {isa = PBXFileReference; lastKnownFileType = text.plist.xml;   path = Info.plist;               sourceTree = "<group>"; };
+		F011 /* HelpView.swift */         = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift;           sourceTree = "<group>"; };
+		F012 /* Info.plist */             = {isa = PBXFileReference; lastKnownFileType = text.plist.xml;   path = Info.plist;               sourceTree = "<group>"; };
 		PROD /* ChromaSound.app */        = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChromaSound.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -72,7 +74,7 @@
 		};
 		GRP2 /* UI */ = {
 			isa = PBXGroup;
-			children = (F003, F004, F005, F006, F007);
+			children = (F003, F004, F005, F006, F007, F011);
 			name = UI;
 			path = ChromaSound/UI;
 			sourceTree = "<group>";
@@ -100,7 +102,7 @@
 		};
 		GRP6 /* Resources */ = {
 			isa = PBXGroup;
-			children = (F011);
+			children = (F012);
 			name = Resources;
 			path = ChromaSound/Resources;
 			sourceTree = "<group>";
@@ -155,7 +157,7 @@
 		SRCB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (A001,A002,A003,A004,A005,A006,A007,A008,A009,A010);
+			files = (A001,A002,A003,A004,A005,A006,A007,A008,A009,A010,A011);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */

@@ -10,6 +10,7 @@ struct SettingsView: View {
     @ObservedObject var vm: ChromaSoundViewModel
     let onClose:          () -> Void
     let onOpenBandColors: () -> Void
+    let onOpenHelp:       () -> Void
 
     // Local mirrors for all sliders
     @State private var bandCount:      Double
@@ -23,10 +24,12 @@ struct SettingsView: View {
     @State private var colorScheme:    ColorScheme
     @State private var objectShape:    ObjectShape
 
-    init(vm: ChromaSoundViewModel, onClose: @escaping () -> Void, onOpenBandColors: @escaping () -> Void) {
+    init(vm: ChromaSoundViewModel, onClose: @escaping () -> Void,
+         onOpenBandColors: @escaping () -> Void, onOpenHelp: @escaping () -> Void) {
         self.vm = vm
         self.onClose = onClose
         self.onOpenBandColors = onOpenBandColors
+        self.onOpenHelp = onOpenHelp
         let s = vm.settings
         _bandCount      = State(initialValue: Double(s.bandCount))
         _lifetimeMs     = State(initialValue: s.lifetimeMs)
@@ -153,20 +156,38 @@ struct SettingsView: View {
     // MARK: - Sub-views
 
     private var headerRow: some View {
-        HStack {
-            Button(action: onClose) {
-                Text("← BACK")
-                    .font(.system(size: 11, design: .monospaced))
-                    .tracking(2).foregroundColor(textC)
-                    .padding(.horizontal, 16).padding(.vertical, 8)
-                    .overlay(Capsule().stroke(subtleC, lineWidth: 1))
-            }
-            Spacer()
+        ZStack {
+            // SETTINGS title always perfectly centred
             Text("SETTINGS")
                 .font(.system(size: 18, design: .monospaced).weight(.black))
-                .foregroundColor(textC).tracking(4)
-            Spacer()
-            Spacer().frame(width: 80)
+                .foregroundColor(textC)
+                .tracking(4)
+
+            // BACK left, HELP right — both pinned to edges
+            HStack {
+                Button(action: onClose) {
+                    Text("← BACK")
+                        .font(.system(size: 11, design: .monospaced))
+                        .tracking(2)
+                        .foregroundColor(textC)
+                        .padding(.horizontal, 14).padding(.vertical, 8)
+                        .overlay(Capsule().stroke(subtleC, lineWidth: 1))
+                }
+                Spacer()
+                Button(action: onOpenHelp) {
+                    HStack(spacing: 4) {
+                        Text("?")
+                            .font(.system(size: 13, design: .monospaced).weight(.bold))
+                        Text("HELP")
+                            .font(.system(size: 11, design: .monospaced))
+                            .tracking(2)
+                    }
+                    .foregroundColor(accentC)
+                    .padding(.horizontal, 14).padding(.vertical, 8)
+                    .background(accentC.opacity(0.1), in: Capsule())
+                    .overlay(Capsule().stroke(accentC.opacity(0.6), lineWidth: 1.5))
+                }
+            }
         }
         .padding(.top, 56)
         .padding(.bottom, 12)
